@@ -22,6 +22,9 @@ class GreetingResource {
 
     @GET 
     @Path("/greeting/{name}")
-    fun greet(@PathParam("name")name : String ) = greetingService.greet(name);
+    @Produces(MediaType.APPLICATION_JSON)
+    fun greet(@PathParam("name") name : String ): Greeting{
+ return Greeting(greetingService.greet(name));
+    }
     
 }
